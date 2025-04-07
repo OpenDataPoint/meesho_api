@@ -1,4 +1,4 @@
-# Real-time Messho API 🛒🚀
+# Real-time Meesho API 🛒🚀
 The Meesho API provides access to Meesho's product catalog, search functionality, and detailed product information. This API enables developers to integrate Meesho's extensive marketplace data into their applications. 📱💻
 
 ## 💪 Why Use Realtime-Meesho API? 🌟
@@ -60,7 +60,7 @@ Get detailed information about a specific product.
 ## Authentication 🔑
 Authentication is handled through RapidAPI. Include your RapidAPI key in the request headers:
 
-- x-rapidapi-host: real-time-messho-api.p.rapidapi.com
+- x-rapidapi-host: real-time-meesho-api.p.rapidapi.com
 - x-rapidapi-key: your_rapid_api_key
 
 ## Features 🌟
@@ -72,6 +72,24 @@ Authentication is handled through RapidAPI. Include your RapidAPI key in the req
 - Detailed product information
 - Optional raw response format
 - Error handling and logging
+
+## Error Responses ⚠️
+
+|   Status Code      |      Error Code                       |Description|
+|--------------------|-------------------------------|-----------------------------|
+|    400             |      INVALID_ID              |  Invalid Product ID/Invalid Category ID     
+|    502             |      RELAY_SERVICE_ERROR      |  Temporary connection issue     
+|    503             |      CONNECTION_ERROR         |  Unable to connect to Ahrefs   
+|    500             |      INTERNAL_SERVER_ERROR    |  Unexpected server error
+|    500             |      UNKNOWN_ERROR            |  Unhandled error condition
+
+## Error Response Format
+
+<pre><code>{
+    "error": "ERROR_CODE",
+    "details": "Error description message"
+}
+</code></pre>
 
 ## Notes 📝
 
