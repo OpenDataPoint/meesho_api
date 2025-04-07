@@ -25,8 +25,10 @@ The Meesho API provides access to Meesho's product catalog, search functionality
   
 ## Endpoints 🔗
 
-1. Get Products by Category 📂
+### Get Products by Category 📂
+
 Retrieve products for a specific category from Meesho.
+
 <pre><code>GET /products-by-category</code></pre>
 
 ### parameters
@@ -36,8 +38,10 @@ Retrieve products for a specific category from Meesho.
 |    page         |      integer                  |Page number for pagination
 
 
-3. Product Search 🔎
+### Product Search 🔎
+
 Search for products using keywords.
+
 <pre><code>GET /product-search</code></pre>
 
 ### parameters
@@ -47,8 +51,10 @@ Search for products using keywords.
 |    page         |      integer                  |Page number for pagination
 
 
-4. Product Details 📦
+### Product Details 📦
+
 Get detailed information about a specific product.
+
 <pre><code>GET /product-details</code></pre>
 
 ### parameters
@@ -58,6 +64,7 @@ Get detailed information about a specific product.
 
 
 ## Authentication 🔑
+
 Authentication is handled through RapidAPI. Include your RapidAPI key in the request headers:
 
 - x-rapidapi-host: real-time-meesho-api.p.rapidapi.com
