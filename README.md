@@ -54,23 +54,22 @@ Check the API's health status to ensure it's up and running.
 - **Endpoint:** `GET /health`
 - **Summary**: Checks the API's health status.
 - **Description**: Verify if the API is operational.
-- **Operation ID**: `health_check_health_get`
 #### Parameters
 None required. Just send the request! 
 #### Responses
 200: Successful response indicating the API is healthy.
 ```
-'json'
 {}
 ```
 #### Example Request:
+
 ```
-'bash'
-curl -u https://meesho-api.p.rapidapi.com/health
+curl --request GET 
+	--url 'https://real-time-meesho-api.p.rapidapi.com/health' 
+	--header 'x-rapidapi-host: real-time-meesho-api.p.rapidapi.com'
 ```
 #### Example Response:
 ```
-'json'
 {
   status: healthy
 }
@@ -80,19 +79,17 @@ Retrieve a list of products filtered by a specific category.
 - **Endpoint:** `GET /products-by-category`
 - **Summary**: Fetches products by category ID.
 - **Description**: Retrieve products for a specific category. Supports pagination and raw response options.
-- **Operation ID**: `products_by_category_products_by_category_get`
 #### Parameters
-| Name     | Type    | Required | Description                  | Default |
-|----------|---------|----------|------------------------------|---------|
-| page_id  | String  | Yes      | The ID of the category page  | -       |
-| page     | Integer | No       | Page number (minimum: 1)     | 1       |
+| Name         | Type    | Required | Description                  | Default |
+|--------------|---------|----------|------------------------------|---------|
+| category_id  | String  | Yes      | The ID of the category page  | -       |
+| page         | Integer | No       | Page number (minimum: 1)     | 1       |
 
 #### Responses
 - 200: Successful Response
   - Content: JSON object containing products
   - Example:
     ```
-    'json'
       {}
     ```
 - 400: Bad Request.
@@ -106,12 +103,12 @@ Retrieve a list of products filtered by a specific category.
 
 #### Example Request:
 ```
-'bash'
-curl -u https://meesho-api.p.rapidapi.com/products-by-category?page_id=cat123&page=1
+curl --request GET 
+	--url 'https://real-time-meesho-api.p.rapidapi.com/products-by-category?category_id=3iy&page=1' 
+	--header 'x-rapidapi-host: real-time-meesho-api.p.rapidapi.com'
 ```
 #### Example Response:
 ```
-'json'
 {
   "success": true,
   "productsInPage": 20,
@@ -123,7 +120,6 @@ Search for products using a query string.
 - **Endpoint:** `GET /product-search`
 - **Summary**: Searches products by query string.
 - **Description**: Search products by providing a query string. Supports pagination.
-- **Operation ID**: `product_search_product_search_get`
 #### Parameters
 | Name  | Type    | Required | Description                  | Default |
 |-------|---------|----------|------------------------------|---------|
@@ -135,7 +131,6 @@ Search for products using a query string.
   - Content: JSON object containing products
   - Example:
     ```
-    'json'
       {}
     ```
 - 400: Bad Request.
@@ -149,12 +144,12 @@ Search for products using a query string.
 
 #### Example Request:
 ```
-'bash'
-curl -u https://meesho-api.p.rapidapi.com/product-search?query=shoes&page=1
+curl --request GET 
+	--url 'https://real-time-meesho-api.p.rapidapi.com/product-details?product_id=5g92xr' 
+	--header 'x-rapidapi-host: real-time-meesho-api.p.rapidapi.com'
 ```
 #### Example Response:
 ```
-'json'
 {
   "success": true,
   "productsInPage": 20,
@@ -166,7 +161,6 @@ Fetch detailed information about a specific product.
 - **Endpoint:** `GET /product-details`
 - **Summary**: Fetches product details by product ID.
 - **Description**: Retrieve details for a product by providing its ID.
-- **Operation ID**: `product_details_product_details_get`
 #### Parameters
 | Name       | Type   | Required | Description            |
 |------------|--------|----------|------------------------|
@@ -177,7 +171,6 @@ Fetch detailed information about a specific product.
   - Content: JSON object containing product details.
   - Example:
     ```
-    'json'
       {}
     ```
 - 400: Bad Request.
@@ -191,12 +184,12 @@ Fetch detailed information about a specific product.
 
 #### Example Request:
 ```
-'bash'
-curl -u https://meesho-api.p.rapidapi.com/product-details?product_id=prod123
+curl --request GET 
+	--url 'https://real-time-meesho-api.p.rapidapi.com/product-search?query=kitchen&page=1' 
+	--header 'x-rapidapi-host: real-time-meesho-api.p.rapidapi.com'
 ```
 #### Example Response:
 ```
-'json'
 {
   "success": true,
   "product":{}
@@ -207,34 +200,36 @@ The API uses standard HTTP status codes and provides detailed error responses wh
 ### Common Errors
 - 400 Bad Request:
   ```
-  'json'
   {
-    "success": false,
-    "error": "ERROR_CODE",
-    "details": "Error description message"
+      "success": False,
+      "error": {
+          "code":  "ERROR_CODE",
+          "message": "Error description message"
+      }
   }
   ```
 - 404 Not Found:
   ```
-  'json'
-  {
-    "success": false,
-    "error": "ERROR_CODE",
-    "details": "Error description message"
+   {
+      "success": False,
+      "error": {
+          "code":  "ERROR_CODE",
+          "message": "Error description message"
+      }
   }
   ```
 - 500 Internal Server Error:
   ```
-  'json'
-  {
-    "success": false,
-    "error": "ERROR_CODE",
-    "details": "Error description message"
+   {
+      "success": False,
+      "error": {
+          "code":  "ERROR_CODE",
+          "message": "Error description message"
+      }
   }
   ```
 - 422 Validation Error:
   ```
-  'json'
   {
     "detail": [
       {
@@ -247,9 +242,9 @@ The API uses standard HTTP status codes and provides detailed error responses wh
   ```
 ## Contributing 🤝
 We welcome feedback and contributions! To suggest improvements:
-1. Open an issue on our repository (link TBD).
+1. Open an issue on our repository.
 2. Submit a pull request with your changes.
-3. Follow our code of conduct (TBD).
+3. Follow our code of conduct .
 
 ## Important Notes 📝
 - All endpoints expect query parameters as specified.
@@ -259,9 +254,10 @@ We welcome feedback and contributions! To suggest improvements:
 ## Support 📞
 For help with the Meesho API:
 - Documentation: Refer to this README or the OpenAPI schema (openapi.json).
-- Contact: Reach out to the Meesho API team (contact details TBD).
-- Community: Join our developer community (link TBD).
+- Contact: Reach out to the Meesho API team.
+
+Support Contact:- meesho-api.handheld610[@]passinbox.com 
 
 #### The Meesho API empowers developers to interact with product data effortlessly. With endpoints for health checks 🩺, fetching products by category 🛍️, searching products 🔍, and retrieving product details, it provides a robust interface for building applications. Use query parameters to customize requests and handle responses in JSON format. Dive in, explore, and create something amazing! 🚀
 
-### [Check Meesho API](#)
+### [Check Meesho API](https://rapidapi.com/opendatapointcom/api/real-time-meesho-api)
